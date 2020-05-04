@@ -9,12 +9,14 @@ using std::endl;
 using std::string;
 using std::to_string;
 
-Board::Board(int n){
+Board::Board(const int n){
 	int i, j;
 	int value = 0;
-	brd = new string[n][n];
+	brd = new string*[n];
 	for (i = 0; i < n;i++){
+		cout << "row: " << i << endl;
 		for (j = 0; j < n;j++){
+			cout << "column: " << j << endl;
 			brd[i][j] = to_string(value);
 			value++;
 		}
@@ -23,14 +25,15 @@ Board::Board(int n){
 	size = n;
 }
 
-Board::Board(string n);
-Board::void up();
-Board::void down();
-Board::void left();
-Board::void right();
+Board::Board(string n){};
+void Board::up(){};
+void Board::down(){};
+void Board::left(){};
+void Board::right(){};
 
-Board::void printBox(){
+void Board::printBox(){
 	int i, j;
+	int n = size;
 	for (i = 0; i < n;i++){
                 for (j = 0; j < n;j++){
                         cout << brd[i][j] << " ";
@@ -39,7 +42,7 @@ Board::void printBox(){
         }
 }
 
-Board::void printLine();
+void Board::printLine(){};
 
 Board::~Board(){
 	delete[] brd;

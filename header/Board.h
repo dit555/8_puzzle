@@ -7,7 +7,7 @@ using std::string;
 
 class Board{
 public:
-	Board(int n);
+	Board(const int n);
 	Board(string n);
 
 	void up();

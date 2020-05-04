@@ -4,8 +4,14 @@ SET(CMAKE_CXX_STANDARD 11)
 
 ADD_SUBDIRECTORY(googletest)
 
+INCLUDE_DIRECTORIES(${header})
+#INCLUDE_DIRECTORIES(${CMAKE_SOURCE_DIR}/src)
+
 ADD_EXECUTABLE(puzzle
+	header/Board.h
+	src/Board.cpp
 	src/puzzle.cpp
+
 )
 
 ADD_EXECUTABLE(test

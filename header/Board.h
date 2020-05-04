@@ -9,7 +9,8 @@ class Board{
 public:
 	Board(const int n);
 	Board(string n);
-
+	
+	void swap(int x1, int y1, int x2, int y2);
 	void up();
 	void down();
 	void left();
@@ -22,6 +23,8 @@ public:
 private:
 string **brd;
 int size;
+int emptyX;
+int emptyY;
 };
 
 

@@ -15,10 +15,14 @@ public:
 	void left();
 	void right();
 
+	void printBox();
+	void printLine();
 
+	~Board();
 private:
 string **brd;
-}	
+int size;
+};
 
 
 #endif

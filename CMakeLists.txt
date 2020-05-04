@@ -15,7 +15,8 @@ ADD_EXECUTABLE(puzzle
 )
 
 ADD_EXECUTABLE(test
-	tests/test.cpp
+	unit_tests/unit_test.cpp
+	unit_tests/Board_test.h
 )
 
 TARGET_LINK_LIBRARIES(test gtest)

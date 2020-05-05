@@ -16,6 +16,8 @@ public:
 	void left();
 	void right();
 
+	void scramble(int n);
+
 	void printBox();
 	void printLine();
 

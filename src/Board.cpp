@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
-#include <math.h>
+#include <time.h>
+#include <stdlib.h>
 
 #include "../header/Board.h"
 
@@ -65,18 +66,18 @@ void Board::up(){
 		swap(emptyX, emptyY, emptyX, emptyY - 1);		
 		emptyY--;
 	}
-	else
-		cout << "cannot slide up" << endl;
+	else{}
+		//cout << "cannot slide up" << endl;
 }
 
 void Board::down(){
 	//check if there is space to move down
-        if ( emptyY != size){
+        if ( emptyY != size - 1){
                 swap(emptyX, emptyY, emptyX, emptyY + 1);
 		emptyY++;
         }
-        else
-                cout << "cannot slide down" << endl;
+        else{}
+                //cout << "cannot slide down" << endl;
 }
 
 void Board::left(){
@@ -85,18 +86,47 @@ void Board::left(){
                 swap(emptyX, emptyY, emptyX - 1, emptyY);
 		emptyX--;
         }
-        else
-                cout << "cannot slide left" << endl;
+        else{}
+                //cout << "cannot slide left" << endl;
 }
 
 void Board::right(){
 	//check if there is space to move right
-        if ( emptyX != size){
+        if ( emptyX != size - 1){
                 swap(emptyX, emptyY, emptyX + 1, emptyY);
-        	emptyY++;
+        	emptyX++;
 	}
-        else
-                cout << "cannot slide right" << endl;
+        else{}
+                //cout << "cannot slide right" << endl;
+}
+
+void Board::scramble(int n){
+	int choice = 0;
+	int p = n;
+	srand(time(NULL));
+	while(p > 0 ){
+		choice = rand() % 4;
+
+		//cout << choice << endl;
+
+		if (choice == 0 && emptyY != 0){
+			this->up();
+		}
+		else if (choice == 1 && emptyY != size - 1){
+			this->down();
+		}
+		else if (choice == 2 && emptyX != 0){
+			this->left();
+		}
+		else if (choice == 3 && emptyX != size - 1){
+			this->right();
+		}
+		else
+			p++;
+		//this->printBox();
+		//cout << endl;
+		p--;
+	}
 }
 
 void Board::printBox(){

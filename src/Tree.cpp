@@ -6,6 +6,7 @@
 
 Tree::Tree(Node* n){
 	root = n;
+	root->setDepth(0);
 }
 
 Node* Tree::newNode(Board* b){
@@ -20,44 +21,81 @@ void Tree::explore(Node* b){
 
                 b->setUP(newNode(b->getBrd()));
                 b->UP()->getBrd()->up();
-                b->UP()->getBrd()->printBox();
+		b->UP()->incDepth();
+                //b->UP()->getBrd()->printBox();
         }
 
-        std::cout << std::endl;
-        std::cout << std::endl;
+        //std::cout << std::endl;
+        //std::cout << std::endl;
 
         if(b->getBrd()->getEmptyY() != b->getBrd()->getSize()){
                 b->setDOWN(newNode(b->getBrd()));
                 b->DOWN()->getBrd()->down();
-                b->DOWN()->getBrd()->printBox();
+		b->DOWN()->incDepth();
+                //b->DOWN()->getBrd()->printBox();
         }
 	
-	std::cout << std::endl;
-        std::cout << std::endl;
+	//std::cout << std::endl;
+        //std::cout << std::endl;
 
 
         if(b->getBrd()->getEmptyX() != 0){
          
                 b->setLEFT(newNode(b->getBrd()));
                 b->LEFT()->getBrd()->left();
-                b->LEFT()->getBrd()->printBox();
+		b->LEFT()->incDepth();
+                //b->LEFT()->getBrd()->printBox();
 	}
 	
-	std::cout << std::endl;
-        std::cout << std::endl;
+	//std::cout << std::endl;
+        //std::cout << std::endl;
 
 
         if(b->getBrd()->getEmptyY() != b->getBrd()->getSize()){
                 
                 b->setRIGHT(newNode(b->getBrd()));
                 b->RIGHT()->getBrd()->right();
-                b->RIGHT()->getBrd()->printBox();
-        }
-
-	std::cout << std::endl;
-        std::cout << std::endl;
-	b->getBrd()->printBox();
-       	std::cout << std::endl;
+		b->RIGHT()->incDepth();
+                //b->RIGHT()->getBrd()->printBox();
+     	}
 }
 
-Node* Tree::min(){}
+Node* Tree::minUCF(){
+
+}
+
+Node* Tree::minMTH(){
+
+}
+
+Node* Tree::minEDH(){
+
+}
+
+bool Tree::isGoal(Node* n){
+	bool equal = false;
+	int s = n->getBrd()->getSize();
+	Board a(s);
+	for (int i = 0; i < s;i++){
+		for (int j = 0; j< s; j++){
+			if (n->getBrd()->getVal(i,j) == a.getVal(i,j))
+				equal = true;
+			else
+				equal = false;
+
+		}
+	}
+	return equal;
+}
+
+void Tree::solveUCF(){
+
+}
+
+void Tree::solveMTH(){
+
+}
+
+void Tree::solveEDH(){
+
+}

@@ -9,12 +9,18 @@ class Board{
 public:
 	Board(const int n);
 	Board(const string* n, const int s);
+	Board(Board* board);
+
+	string** getBoard();
+	int getSize();
+	int getEmptyX();
+	int getEmptyY();
 	
 	void swap(int x1, int y1, int x2, int y2);
-	void up();
-	void down();
-	void left();
-	void right();
+	bool up();
+	bool down();
+	bool left();
+	bool right();
 
 	void scramble(int n);
 

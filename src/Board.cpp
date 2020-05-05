@@ -54,49 +54,80 @@ Board::Board(const string *n, const int s){
         size = s;
 }
 
+Board::Board(Board* board){
+	brd = board->getBoard();
+	size = board->getSize();
+	emptyX = board->getEmptyX();
+	emptyY = board->getEmptyY();
+}
+
+string** Board::getBoard(){
+	return brd;
+}
+
+int Board::getSize(){
+	return size;
+}
+
+int Board::getEmptyX(){
+	return emptyX;
+}
+
+int Board::getEmptyY(){
+	return emptyY;
+}
+
 void Board::swap(int x1, int y1, int x2, int y2){
 	string temp = brd[y1][x1];
 	brd[y1][x1] = brd[y2][x2];
 	brd[y2][x2] = temp;
 }
 
-void Board::up(){
+bool Board::up(){
 	//check if there is space to move up
 	if ( emptyY != 0){
 		swap(emptyX, emptyY, emptyX, emptyY - 1);		
 		emptyY--;
+		return true;
 	}
-	else{}
+	else
+		return false;
 		//cout << "cannot slide up" << endl;
 }
 
-void Board::down(){
+bool Board::down(){
 	//check if there is space to move down
         if ( emptyY != size - 1){
                 swap(emptyX, emptyY, emptyX, emptyY + 1);
 		emptyY++;
+		return true;
         }
-        else{}
+        else
+		return false;
                 //cout << "cannot slide down" << endl;
 }
 
-void Board::left(){
+bool Board::left(){
 	//check if there is space to move up
         if ( emptyX != 0){
                 swap(emptyX, emptyY, emptyX - 1, emptyY);
 		emptyX--;
-        }
-        else{}
+        	return true;
+	}
+        else
+		return false;
                 //cout << "cannot slide left" << endl;
 }
 
-void Board::right(){
+bool Board::right(){
 	//check if there is space to move right
         if ( emptyX != size - 1){
                 swap(emptyX, emptyY, emptyX + 1, emptyY);
         	emptyX++;
+		return true;
 	}
-        else{}
+        else
+		return false;
                 //cout << "cannot slide right" << endl;
 }
 

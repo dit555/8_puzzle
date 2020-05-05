@@ -3,14 +3,11 @@
 #include "../header/Board.h"
 #include <string>
 
+using std::string;
+
 int main(){
-	Board a("1 2 3 4 5 6 7 8 * ");
-	a.up();
-	a.left();
-	a.printBox();
-	a.down();
-	a.printBox();
-	a.right();
+	const string b[9] = {"1" , "3", "2", "4","5","6","7","*","8"};
+	Board a(b, 3);
 	a.printBox();	
 	a.printLine();
 	return 0;

@@ -5,7 +5,6 @@ SET(CMAKE_CXX_STANDARD 11)
 ADD_SUBDIRECTORY(googletest)
 
 INCLUDE_DIRECTORIES(${header})
-INCLUDE_DIRECTORIES(${unit_tests})
 
 ADD_EXECUTABLE(puzzle
 	header/Board.h

@@ -8,7 +8,7 @@ using std::string;
 class Board{
 public:
 	Board(const int n);
-	Board(string n);
+	Board(const string* n, const int s);
 	
 	void swap(int x1, int y1, int x2, int y2);
 	void up();

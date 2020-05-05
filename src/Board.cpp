@@ -31,49 +31,26 @@ Board::Board(const int n){
 	size = n;
 }
 
-Board::Board(string n){
-	//parse inputs
-	int numInputs = 0;
-	for (int i = 0; i < n.size(); i++){
-		if(n[i] == ' ')
-			numInputs++;
-	}
-	size = (int)sqrt((double)numInputs);
-
-	//assigne inputs to and array
-	string* inputs = new string[size];
-	int index = 0;
-	int l1 = 0;
-	int l2 = 0;
-	for (int i = 0; i < n.length(); i++){
-		if (n[i] == ' '){
-			l2 = i;
-			inputs[index] = n.substr(l1,l2);
-			l1 = i + 1;
-			index++;
-		}
-	}
-	//put the inputs into a board
+Board::Board(const string *n, const int s){
 	int i, j;
-	index = 0;
-        brd = new string*[size];
-        for (i = 0; i < size; i++){
+        int value = 0; //first number to be put in the board
+	brd = new string*[s];
+        for (i = 0; i < s;i++){
                 //cout << "row: " << i << endl;
-                string* col = new string[size];
-                for (j = 0; j < size;j++){
+                string* col = new string[s];
+                for (j = 0; j < s;j++){
                         //cout << "column: " << j << endl;
-                        col[j] = inputs[index];
-                        index++;
-			if (inputs[index] == "*"){
+                        col[j] = n[value];
+                        value++;
+			if (col[j] == "*"){
 				emptyX = i;
 				emptyY = j;
 			}
+			
                 }
                 brd[i] = col;
         }
-
-
-	delete[] inputs;
+        size = s;
 }
 
 void Board::swap(int x1, int y1, int x2, int y2){

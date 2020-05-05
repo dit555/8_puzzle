@@ -5,6 +5,8 @@
 #include "../header/Board.h"
 #include "../header/Tree.h"
 
+using std::cout;
+using std::endl;
 
 Tree::Tree(Node* n){
 	root = n;
@@ -115,6 +117,26 @@ int Tree::minEDH(Node* n){
 
 }
 
+Node* findNode(Node* n, int p){
+	if(n->UP() != nullptr){
+                return  findNode(n->UP(), p);
+        }
+
+        if(n->DOWN() != nullptr)
+                return findNode(n->DOWN(), p);
+
+        if(n->LEFT() != nullptr)
+                return findNode(n->LEFT(), p);
+
+        if(n->RIGHT() != nullptr)
+                return findNode(n->RIGHT(), p);
+	
+	if (n->getDepth() == p)
+		return n;
+
+	return nullptr;
+}
+
 bool Tree::isGoal(Node* n){
 	bool equal = false;
 	int s = n->getBrd()->getSize();
@@ -132,7 +154,16 @@ bool Tree::isGoal(Node* n){
 }
 
 void Tree::solveUCF(){
-
+	Node* temp = root;
+	if (this->isGoal(temp)){
+		temp->getBrd()->printBox();
+		cout << "GOAL!" << endl;
+	}
+	else{
+		cout << "expanding root node" << endl;
+		temp->getBrd()->printBox();
+		cout << endl;
+	}
 }
 
 void Tree::solveMTH(){

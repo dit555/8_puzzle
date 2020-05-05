@@ -14,6 +14,7 @@ public:
 	int minMTH(Node* n); //returns the min node to explore in Misplaced TIle Huristic
 	int minEDH(Node* n); //returns the min node to explore in Euclidian Distance Huristic
 
+	Node* findNode(Node* n, int t);
 	bool isGoal(Node* n);
 
 	void solveUCF();

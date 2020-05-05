@@ -160,9 +160,26 @@ void Tree::solveUCF(){
 		cout << "GOAL!" << endl;
 	}
 	else{
-		cout << "expanding root node" << endl;
+		cout << "exploring root node" << endl;
 		temp->getBrd()->printBox();
 		cout << endl;
+		this->explore(temp);
+
+		while(1){
+			int cost = this->minUCF(root);
+			temp = this->findNode(root, cost);
+			if(this->isGoal(temp)){
+				temp->getBrd()->printBox();
+				cout << "GOAL!" << endl;
+				break;
+			}
+			else
+				cout << "exploring node of cost: " << cost << endl;
+		       		temp->getBrd()->printBox();	
+				this->explore(temp);
+				cout << endl;
+				
+		}
 	}
 }
 

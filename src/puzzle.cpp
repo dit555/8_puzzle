@@ -12,9 +12,11 @@ using std::endl;
 int main(){
 	const string d[9] = {"1" , "2", "3", "4","*","5","6","7","8"};
 	Board a(3);
-	a.scramble(3);
+	a.up();
+	a.left();
+	//a.scramble(3);
 	//a.printBox();
-	cout << endl << endl;
+	//cout << endl << endl;
 	Node b(&a);
 	Tree c(&b);
 

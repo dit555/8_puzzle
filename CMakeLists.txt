@@ -9,6 +9,9 @@ INCLUDE_DIRECTORIES(${header})
 ADD_EXECUTABLE(puzzle
 	header/Board.h
 	src/Board.cpp
+	header/Node.h
+	src/Node.cpp
+
 	src/puzzle.cpp
 
 )

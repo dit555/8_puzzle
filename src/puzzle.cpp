@@ -2,6 +2,7 @@
 
 #include "../header/Board.h"
 #include "../header/Node.h"
+#include "../header/Tree.h"
 #include <string>
 
 using std::string;
@@ -9,14 +10,19 @@ using std::cout;
 using std::endl;
 
 int main(){
-	//const string b[9] = {"1" , "3", "2", "4","5","6","7","*","8"};
-	Board a(3);
+	const string d[9] = {"1" , "2", "3", "4","*","5","6","7","8"};
+	Board a(d,3);
+	//a.scramble(6);
+	a.printBox();
+	cout << endl << endl;
 	Node b(&a);
+	Tree c(&b);
 	if (b.isLeaf())
 		cout << "leaf" << endl;	
 	//b.getBrd()->printBox();
-	b.explore();
+	c.explore(&b);
 	cout << endl << endl;
-	b.getBrd()->printBox();
+	if (b.isLeaf())
+                cout << "leaf" << endl;
 	return 0;
 }

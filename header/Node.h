@@ -12,11 +12,17 @@ public:
 	Node* LEFT();
 	Node* RIGHT();
 
-	Node* CUR(); //return pointer to current node
+	void setUP(Node* N);
+	void setDOWN(Node* N);
+	void setLEFT(Node* N);
+	void setRIGHT(Node* N);
+
+	void incDepth();
+	void setDepth(int n);
+	int getDepth();
 
 	Board* getBrd();
 	
-	void explore();
 	bool isLeaf();
 
 	~Node();

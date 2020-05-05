@@ -9,12 +9,12 @@ class Board{
 public:
 	Board(const int n);
 	Board(const string* n, const int s);
-	Board(Board* board);
+	Board(const Board* b);
 
-	string** getBoard();
-	int getSize();
-	int getEmptyX();
-	int getEmptyY();
+	string** getBoard() const;
+	int getSize() const;
+	int getEmptyX() const;
+	int getEmptyY() const;
 	
 	void swap(int x1, int y1, int x2, int y2);
 	bool up();

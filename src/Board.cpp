@@ -54,26 +54,26 @@ Board::Board(const string *n, const int s){
         size = s;
 }
 
-Board::Board(Board* board){
-	brd = board->getBoard();
-	size = board->getSize();
-	emptyX = board->getEmptyX();
-	emptyY = board->getEmptyY();
+Board::Board(const Board* b){
+	brd = b->getBoard();
+	size = b->getSize();
+	emptyX = b->getEmptyX();
+	emptyY = b->getEmptyY();
 }
 
-string** Board::getBoard(){
+string** Board::getBoard() const{
 	return brd;
 }
 
-int Board::getSize(){
+int Board::getSize() const{
 	return size;
 }
 
-int Board::getEmptyX(){
+int Board::getEmptyX() const{
 	return emptyX;
 }
 
-int Board::getEmptyY(){
+int Board::getEmptyY() const{
 	return emptyY;
 }
 

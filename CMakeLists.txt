@@ -11,6 +11,8 @@ ADD_EXECUTABLE(puzzle
 	src/Board.cpp
 	header/Node.h
 	src/Node.cpp
+	header/Tree.h
+	src/Tree.cpp
 
 	src/puzzle.cpp
 

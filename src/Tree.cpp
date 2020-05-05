@@ -1,8 +1,10 @@
 #include <iostream>
+#include <algorithm>
 
 #include "../header/Node.h"
 #include "../header/Board.h"
 #include "../header/Tree.h"
+
 
 Tree::Tree(Node* n){
 	root = n;
@@ -60,15 +62,56 @@ void Tree::explore(Node* b){
      	}
 }
 
-Node* Tree::minUCF(){
+int Tree::minUCF(Node* n){
+	//temporary mins
+	int tempu;
+	int tempd;
+	int templ;
+	int tempr;
+
+	int temp1;
+	int temp2;	
+	
+	//recursively iterate through all nodes	
+	if(n->UP() != nullptr){
+		tempu =  minUCF(n->UP());
+	}
+	else
+		tempu = 100000; //garbage value that can never be min
+
+	if(n->DOWN() != nullptr)
+                tempd = minUCF(n->DOWN());
+	else
+		tempd = 100000;
+
+	if(n->LEFT() != nullptr)
+                templ =  minUCF(n->LEFT());
+	else
+		templ = 100000;
+
+	if(n->RIGHT() != nullptr)
+                tempr =  minUCF(n->RIGHT());
+	else
+		tempr = 100000;
+	//only looking for values of leaf nodes
+	if (n->isLeaf())
+		return n->getDepth();
+
+	temp1 = std::min(tempu, tempd);
+	temp2 = std::min(templ, tempr);
+
+	temp1 = std::min(temp1, temp2); //is the most min value of the child nodes
+	return temp1;
+
+
+
+	
+}
+int Tree::minMTH(Node* n){
 
 }
 
-Node* Tree::minMTH(){
-
-}
-
-Node* Tree::minEDH(){
+int Tree::minEDH(Node* n){
 
 }
 

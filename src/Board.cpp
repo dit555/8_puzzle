@@ -55,7 +55,19 @@ Board::Board(const string *n, const int s){
 }
 
 Board::Board(const Board* b){
-	brd = b->getBoard();
+	int i, j;
+        int value = 0; //first number to be put in the board
+        brd = new string*[b->getSize()];
+        for (i = 0; i < b->getSize();i++){
+                //cout << "row: " << i << endl;
+                string* col = new string[b->getSize()];
+                for (j = 0; j < b->getSize();j++){
+                        //cout << "column: " << j << endl;
+                        col[j] = b->getVal(i,j);
+
+                }
+                brd[i] = col;
+        }
 	size = b->getSize();
 	emptyX = b->getEmptyX();
 	emptyY = b->getEmptyY();
@@ -63,6 +75,10 @@ Board::Board(const Board* b){
 
 string** Board::getBoard() const{
 	return brd;
+}
+
+string Board::getVal(int x, int y) const{
+	return brd[x][y];
 }
 
 int Board::getSize() const{

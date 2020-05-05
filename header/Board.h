@@ -12,6 +12,7 @@ public:
 	Board(const Board* b);
 
 	string** getBoard() const;
+	string getVal(int x, int y) const;
 	int getSize() const;
 	int getEmptyX() const;
 	int getEmptyY() const;

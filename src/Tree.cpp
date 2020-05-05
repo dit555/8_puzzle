@@ -9,7 +9,8 @@ Tree::Tree(Node* n){
 }
 
 Node* Tree::newNode(Board* b){
-	Node *temp = new Node(b);
+	Board* a = new Board(b);
+	Node* temp = new Node(a);
 	return temp;
 }
 

@@ -3,7 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-#include "../header/Board.h"
+#include "Board.h"
 
 using std::cout;
 using std::endl;
@@ -58,19 +58,22 @@ Board::Board(const Board* b){
 	int i, j;
         int value = 0; //first number to be put in the board
         brd = new string*[b->getSize()];
-        for (i = 0; i < b->getSize();i++){
+        for (i = 0; i < b->getSize() ;i++){
                 //cout << "row: " << i << endl;
                 string* col = new string[b->getSize()];
-                for (j = 0; j < b->getSize();j++){
+                for (j = 0; j < b->getSize() ;j++){
                         //cout << "column: " << j << endl;
                         col[j] = b->getVal(i,j);
 
                 }
                 brd[i] = col;
         }
+	
 	size = b->getSize();
 	emptyX = b->getEmptyX();
 	emptyY = b->getEmptyY();
+	if (brd == nullptr)
+		cout << "fuck" << endl;
 }
 
 string** Board::getBoard() const{

@@ -5,7 +5,7 @@
 
 using std::string;
 
-class Board{
+class Board {
 public:
 	Board(const int n);
 	Board(const string* n, const int s);
@@ -16,7 +16,7 @@ public:
 	int getSize() const;
 	int getEmptyX() const;
 	int getEmptyY() const;
-	
+
 	void swap(int x1, int y1, int x2, int y2);
 	bool up();
 	bool down();
@@ -30,10 +30,10 @@ public:
 
 	~Board();
 private:
-string **brd;
-int size;
-int emptyX;
-int emptyY;
+	string** brd;
+	int size;
+	int emptyX;
+	int emptyY;
 };
 
 

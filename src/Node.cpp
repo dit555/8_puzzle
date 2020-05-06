@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdlib.h>
 
 #include "../header/Node.h"
 #include "../header/Board.h"
@@ -85,7 +86,29 @@ int Node::calcMth(){
 }
 
 int Node::calcEdh(){
+	int val = 0;
+	int s = this->getBrd()->getSize();
+        Board a(s);
+        for (int i = 0; i < s; i++){
+                for(int j = 0; j < s; j++){
+			// if tile misplaced find how far away it is
+                        if (a.getVal(i, j) != this->getBrd()->getVal(i, j)){
+                        	for (int l = 0; l < s; s++){
+					for(int m = 0; m < s; m++){
+						cout << i << j << l << m;
+						if(a.getVal(i, j) == this->getBrd()->getVal(l, m)){
+							val += abs(i - l);
+							cout << i << "-" << j << endl;
+							val += abs(j - m);
+							cout << l << "-" << m << endl;
 
+						}
+					}
+				}	
+			}
+                }
+        }
+        return val;
 }
 
 Board* Node::getBrd() {

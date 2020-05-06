@@ -24,7 +24,7 @@ void Tree::explore(Node* b) {
 
 	//b->getBrd()->printBox();
 
-	if (b->getBrd()->getEmptyY() > 0) {
+	if (b->getBrd()->getEmptyY() != 0) {
 		/*cout << "tyring up..." << endl;*/
 		b->setUP(newNode(b->getBrd(), b->getDepth() + 1));
 		b->UP()->getBrd()->up();
@@ -36,7 +36,7 @@ void Tree::explore(Node* b) {
 	/*std::cout << std::endl;
 	std::cout << std::endl;*/
 
-	if (b->getBrd()->getEmptyY() < b->getBrd()->getSize() - 1) {
+	if (b->getBrd()->getEmptyY() != b->getBrd()->getSize() - 1) {
 		/*cout << "tyring down..." << endl;*/
 		b->setDOWN(newNode(b->getBrd(), b->getDepth() + 1));
 		b->DOWN()->getBrd()->down();
@@ -50,7 +50,7 @@ void Tree::explore(Node* b) {
 		std::cout << std::endl;*/
 
 
-	if (b->getBrd()->getEmptyX() > 0) {
+	if (b->getBrd()->getEmptyX() != 0) {
 		/*cout << "tyring left..." << endl;*/
 		b->setLEFT(newNode(b->getBrd(), b->getDepth() + 1));
 		b->LEFT()->getBrd()->left();
@@ -64,13 +64,14 @@ void Tree::explore(Node* b) {
 		std::cout << std::endl;*/
 
 
-	if (b->getBrd()->getEmptyY() < b->getBrd()->getSize() - 1) {
+	if (b->getBrd()->getEmptyY() != b->getBrd()->getSize()) {
 		/*cout << "tyring right..." << endl;*/
 		b->setRIGHT(newNode(b->getBrd(), b->getDepth() + 1));
 		b->RIGHT()->getBrd()->right();
 		//b->RIGHT()->incDepth();
 				/*b->RIGHT()->getBrd()->printBox();*/
 		//cout << endl << b->RIGHT()->getDepth();
+		
 
 	}
 

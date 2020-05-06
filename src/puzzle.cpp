@@ -16,11 +16,11 @@ int main() {
 	//a.left();
 	//a.down();
 	
-	a.scramble(2);
-	//a.printBox();
+	a.scramble(20);
+	a.printBox();
 	//cout << endl << endl;
 	Node b(&a);
-	b.calcEdh();
+	cout <<b.calcEdh() << endl;
 	//cout << b.getDepth() << endl;
 	//cout << endl << b.calcMth() << endl;
 	Tree c(&b);

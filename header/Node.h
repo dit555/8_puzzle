@@ -22,6 +22,9 @@ public:
 	void setDepth(int n);
 	int getDepth();
 
+	int calcMth();
+	int calcEdh();
+
 	Board* getBrd();
 
 	bool isLeaf();

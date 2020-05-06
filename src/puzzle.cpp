@@ -12,14 +12,16 @@ using std::endl;
 int main() {
 	const string d[9] = { "1" , "*", "3", "4","2","6","7","5","8" };
 	Board a(3);
+	//a.up();
 	//a.left();
-	//a.left();
-	a.scramble(6);
-	//a.printBox();
+	//a.down();
+	
+	a.scramble(20);
+	a.printBox();
 	//cout << endl << endl;
 	Node b(&a);
 	//cout << b.getDepth() << endl;
-
+	cout << endl << b.calcMth() << endl;
 	Tree c(&b);
 
 	/*c.explore(&b);
@@ -30,7 +32,7 @@ int main() {
 	c.explore(b.RIGHT());*/
 
 	//cout << endl <<  c.minUCF(&b) << endl;
-	c.solveUCF();
+	//c.solveUCF();
 
 
 

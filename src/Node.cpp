@@ -71,6 +71,23 @@ int Node::getDepth() {
 	return depth;
 }
 
+int Node::calcMth(){
+	int val = 9;
+	int s = this->getBrd()->getSize();
+	Board a(s);
+	for (int i = 0; i < s; i++){
+		for(int j = 0; j < s; j++){
+			if (a.getVal(i, j) == this->getBrd()->getVal(i, j))
+				val--;	
+		}
+	}	
+	return val;
+}
+
+int Node::calcEdh(){
+
+}
+
 Board* Node::getBrd() {
 	return b;
 }

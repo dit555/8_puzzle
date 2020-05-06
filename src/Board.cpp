@@ -2,6 +2,7 @@
 #include <string>
 #include <time.h>
 #include <stdlib.h>
+#include <fstream>
 
 #include "../header/Board.h"
 
@@ -182,12 +183,15 @@ void Board::scramble(int n){
 void Board::printBox(){
 	int i, j;
 	int n = size;
+	std::ofstream myfile;
+	myfile.open ("trace.txt", std::ios::app); //appends to file
 	for (i = 0; i < n;i++){
                 for (j = 0; j < n;j++){
-                        cout << brd[i][j] << " ";
+                        myfile << brd[i][j] << " ";
                 }
-		cout << endl;
+		myfile << endl;
         }
+	myfile.close();
 }
 
 void Board::printLine(){

@@ -1,5 +1,6 @@
 #include <iostream>
 #include <algorithm>
+#include <fstream>
 
 #include "../header/Node.h"
 #include "../header/Board.h"
@@ -168,7 +169,46 @@ int Tree::minMTH(Node* n) {
 }
 
 int Tree::minEDH(Node* n) {
-	return 0;
+	//temporary mins
+        int tempu;
+        int tempd;
+        int templ;
+        int tempr;
+
+        int temp1;
+        int temp2;	
+	//recursively iterate through all nodes
+        if (n->UP() != nullptr) {
+                tempu = minUCF(n->UP());
+        }
+        else
+                tempu = 1000000; //garbage value that can never be min
+
+        if (n->DOWN() != nullptr)
+                tempd = minUCF(n->DOWN());
+        else
+                tempd = 10000000;
+
+        if (n->LEFT() != nullptr)
+                templ = minUCF(n->LEFT());
+        else
+                templ = 10000000;
+
+        if (n->RIGHT() != nullptr)
+                tempr = minUCF(n->RIGHT());
+        else
+                tempr = 10000000;
+
+        //only looking for values of leaf nodes
+        if (n->isLeaf())
+                return n->getDepth() + n->calcEdh();
+
+        temp1 = std::min(tempu, tempd);
+        temp2 = std::min(templ, tempr);
+
+        temp1 = std::min(temp1, temp2); //is the most min value of the child nodes
+        return temp1;
+
 }
 
 Node* Tree::findNode(Node* n, int p) {
@@ -225,35 +265,51 @@ bool Tree::isGoal(Node* n) {
 void Tree::solveUCF() {
 	int tries = 0;
 	Node* temp = root;
+	std::ofstream myfile;
+
 	if (this->isGoal(temp)) {
 		temp->getBrd()->printBox();
 		tries++;
-		cout << "GOAL!" << endl;
+		myfile.open("trace.txt", std::ios::app);
+		myfile << "GOAL!" << endl;
+		myfile.close();
 	}
 	else {
-		cout << "exploring root node" << endl;
+		myfile.open("trace.txt", std::ios::app);
+		myfile << "exploring root node" << endl;
+		myfile.close();
 		temp->getBrd()->printBox();
-		cout << "cost: 0" << endl << endl;
+		myfile.open("trace.txt", std::ios::app);
+		myfile << "cost: 0" << endl << endl;
+		myfile.close();
 		this->explore(temp);
 
 		while (1) {
 			int cost = this->minUCF(root);
-			cout << "cost: " << cost << endl;
+			myfile.open("trace.txt", std::ios::app);
+			myfile << "cost: " << cost << endl;
+			myfile.close();
 			temp = this->findNode(root, cost);
 			
 			if (this->isGoal(temp)) {
 				temp->getBrd()->printBox();
-				cout << "GOAL!" << endl;
-				cout << "this solution took " << tries << "tries." << endl;
+				myfile.open("trace.txt", std::ios::app);
+				myfile << "GOAL!" << endl;
+				myfile << "this solution took " << tries << "tries." << endl;
+				myfile.close();
 				break;
 			}
 			else {
 				tries++;
-				cout << "exploring node: " << endl;
+				myfile.open("trace.txt", std::ios::app);
+				myfile << "exploring node: " << endl;
+				myfile.close();
 				temp->getBrd()->printBox();
-				cout << "of cost: " << cost << endl << endl;
+				myfile.open("trace.txt", std::ios::app);
+				myfile << "of cost: " << cost << endl << endl;
 				this->explore(temp);
-				cout << endl;
+				myfile << endl;
+				myfile.close();
 			}
 		}
 	}
@@ -297,5 +353,38 @@ void Tree::solveMTH() {
 }
 
 void Tree::solveEDH() {
+	int tries = 0;
+        Node* temp = root;
+        if (this->isGoal(temp)) {
+                temp->getBrd()->printBox();
+                tries++;
+                cout << "GOAL!" << endl;
+        }
+        else {
+                cout << "exploring root node" << endl;
+                temp->getBrd()->printBox();
+                cout << "cost: 0" << endl << endl;
+                this->explore(temp);
 
+                while (1) {
+                        int cost = this->minEDH(root);
+                        cout << "cost: " << cost << endl;
+                        temp = this->findNode(root, cost);
+
+                        if (this->isGoal(temp)) {
+                                temp->getBrd()->printBox();
+                                cout << "GOAL!" << endl;
+                                cout << "this solution took " << tries << "tries." << endl;
+                                break;
+                        }
+                        else {
+                                tries++;
+                                cout << "exploring node: " << endl;
+                                temp->getBrd()->printBox();
+                                cout << "of cost: " << cost << endl << endl;
+                                this->explore(temp);
+                                cout << endl;
+                        }
+                }
+        }
 }

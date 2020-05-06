@@ -1,9 +1,9 @@
 #include <iostream>
 #include <algorithm>
 
-#include "Node.h"
-#include "Board.h"
-#include "Tree.h"
+#include "../header/Node.h"
+#include "../header/Board.h"
+#include "../header/Tree.h"
 
 using std::cout;
 using std::endl;
@@ -92,22 +92,22 @@ int Tree::minUCF(Node* n) {
 		tempu = minUCF(n->UP());
 	}
 	else
-		tempu = 100000; //garbage value that can never be min
+		tempu = 1000000; //garbage value that can never be min
 
 	if (n->DOWN() != nullptr)
 		tempd = minUCF(n->DOWN());
 	else
-		tempd = 100000;
+		tempd = 10000000;
 
 	if (n->LEFT() != nullptr)
 		templ = minUCF(n->LEFT());
 	else
-		templ = 100000;
+		templ = 10000000;
 
 	if (n->RIGHT() != nullptr)
 		tempr = minUCF(n->RIGHT());
 	else
-		tempr = 100000;
+		tempr = 10000000;
 	//only looking for values of leaf nodes
 	if (n->isLeaf())
 		return n->getDepth();

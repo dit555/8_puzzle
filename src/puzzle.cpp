@@ -1,8 +1,8 @@
 #include <iostream>
 
-#include "Board.h"
-#include "Node.h"
-#include "Tree.h"
+#include "../header/Board.h"
+#include "../header/Node.h"
+#include "../header/Tree.h"
 #include <string>
 
 using std::string;
@@ -10,11 +10,11 @@ using std::cout;
 using std::endl;
 
 int main() {
-	const string d[9] = { "1" , "2", "3", "4","*","5","6","7","8" };
+	const string d[9] = { "1" , "*", "3", "4","2","6","7","5","8" };
 	Board a(3);
-	a.up();
 	a.left();
-	//a.scramble(3);
+	a.left();
+	//a.scramble(2);
 	//a.printBox();
 	//cout << endl << endl;
 	Node b(&a);
@@ -22,18 +22,19 @@ int main() {
 
 	Tree c(&b);
 
-	/*c.explore(&b);
+	c.explore(&b);
 	c.explore(b.UP());
-	c.explore(b.DOWN());
-	c.explore(b.LEFT());
-	c.explore(b.RIGHT());*/
+	c.explore(b.UP()->UP());
+	c.explore(b.UP()->DOWN());
+	c.explore(b.UP()->RIGHT());
+	c.explore(b.RIGHT());
 
 	//cout << endl <<  c.minUCF(&b) << endl;
-	c.solveUCF();
+	//c.solveUCF();
 
 
 
-	//cout << c.minUCF(&b) << endl;
+	cout << c.minUCF(&b) << endl;
 	//if (b.isLeaf())
 		//cout << "leaf" << endl;	
 	//b.getBrd()->printBox();

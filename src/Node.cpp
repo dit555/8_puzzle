@@ -1,7 +1,7 @@
 #include <iostream>
 
-#include "Node.h"
-#include "Board.h"
+#include "../header/Node.h"
+#include "../header/Board.h"
 
 using std::cout;
 using std::endl;

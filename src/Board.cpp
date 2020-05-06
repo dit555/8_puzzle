@@ -3,7 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-#include "Board.h"
+#include "../header/Board.h"
 
 using std::cout;
 using std::endl;

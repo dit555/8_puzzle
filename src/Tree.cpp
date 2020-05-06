@@ -76,8 +76,8 @@ void Tree::explore(Node* b) {
 
 	}
 	std::ofstream myfile;
-	myyfile.open("trace.txt:", std::ios::app);
-	cout << "exploring SUCCESS" << endl << endl;
+	myfile.open("trace.txt:", std::ios::app);
+	myfile << "exploring SUCCESS" << endl << endl;
 	myfile.close();
 }
 
@@ -309,7 +309,9 @@ void Tree::solveUCF() {
 				temp->getBrd()->printBox();
 				myfile.open("trace.txt", std::ios::app);
 				myfile << "of cost: " << cost << endl << endl;
+				myfile.close();
 				this->explore(temp);
+				myfile.open("trace.txt", std::ios::app);
 				myfile << endl;
 				myfile.close();
 			}
@@ -362,7 +364,9 @@ void Tree::solveMTH() {
 				temp->getBrd()->printBox();
 				myfile.open("trace.txt", std::ios::app);
 				myfile << "of cost: " << cost << endl << endl;
+				myfile.close();
 				this->explore(temp);
+				myfile.open("trace.txt", std::ios::app);
 				myfile << endl;
 				myfile.close();
 			}
@@ -414,7 +418,9 @@ void Tree::solveEDH() {
 				temp->getBrd()->printBox();
 				myfile.open("trace.txt", std::ios::app);
 				myfile << "of cost: " << cost << endl << endl;
+				myfile.close();
 				this->explore(temp);
+				myfile.open("trace.txt", std::ios::app);
 				myfile << endl;
 				myfile.close();
 			}

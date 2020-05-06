@@ -110,7 +110,7 @@ int main() {
 	}
 	
 	//////////////////////////////////////////////////////////////////////////////////////////
-	else if (a2 == '2'){
+	else if (a1 == '2'){
 		string d[9];
 		cout << "please enter the numbers, and press enter after each number\n"
 			<< "e.g. 1 followed by enter, with \'*\' being the emty slot"<< endl;
@@ -126,7 +126,7 @@ int main() {
 		
 		Board a(d, 3);
 		Node b(&a);
-		Tree c(&c);
+		Tree c(&b);
 		
 		cout << "your board is: " << endl;
 		a.printBox();

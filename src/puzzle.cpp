@@ -16,14 +16,14 @@ int main() {
 	//a.left();
 	//a.down();
 	
-	a.scramble(20);
-	a.printBox();
+	a.scramble(10);
+	//a.printBox();
 	//cout << endl << endl;
 	Node b(&a);
 	//cout << b.getDepth() << endl;
-	cout << endl << b.calcMth() << endl;
+	//cout << endl << b.calcMth() << endl;
 	Tree c(&b);
-
+	c.solveMTH();
 	/*c.explore(&b);
 	c.explore(b.UP());
 	c.explore(b.UP()->UP());

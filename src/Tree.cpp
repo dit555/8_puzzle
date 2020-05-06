@@ -124,7 +124,47 @@ int Tree::minUCF(Node* n) {
 
 }
 int Tree::minMTH(Node* n) {
-	return 0;
+	//temporary mins
+        int tempu;
+        int tempd;
+        int templ;
+        int tempr;
+
+        int temp1;
+        int temp2;
+
+        //recursively iterate through all nodes 
+        if (n->UP() != nullptr) {
+                tempu = minUCF(n->UP());
+        }
+        else
+                tempu = 1000000; //garbage value that can never be min
+
+        if (n->DOWN() != nullptr)
+                tempd = minUCF(n->DOWN());
+        else
+                tempd = 10000000;
+
+        if (n->LEFT() != nullptr)
+                templ = minUCF(n->LEFT());
+        else
+                templ = 10000000;
+
+        if (n->RIGHT() != nullptr)
+                tempr = minUCF(n->RIGHT());
+        else
+                tempr = 10000000;
+	
+	//only looking for values of leaf nodes
+        if (n->isLeaf())
+                return n->getDepth() + n->calcMth();
+
+        temp1 = std::min(tempu, tempd);
+        temp2 = std::min(templ, tempr);
+
+        temp1 = std::min(temp1, temp2); //is the most min value of the child nodes
+        return temp1;
+
 }
 
 int Tree::minEDH(Node* n) {
@@ -220,7 +260,40 @@ void Tree::solveUCF() {
 }
 
 void Tree::solveMTH() {
+	int tries = 0;
+        Node* temp = root;
+        if (this->isGoal(temp)) {
+                temp->getBrd()->printBox();
+                tries++;
+                cout << "GOAL!" << endl;
+        }
+        else {
+                cout << "exploring root node" << endl;
+                temp->getBrd()->printBox();
+                cout << "cost: 0" << endl << endl;
+                this->explore(temp);
 
+                while (1) {
+                        int cost = this->minMTH(root);
+                        cout << "cost: " << cost << endl;
+                        temp = this->findNode(root, cost);
+
+                        if (this->isGoal(temp)) {
+                                temp->getBrd()->printBox();
+                                cout << "GOAL!" << endl;
+                                cout << "this solution took " << tries << "tries." << endl;
+                                break;
+                        }
+                        else {
+                                tries++;
+                                cout << "exploring node: " << endl;
+                                temp->getBrd()->printBox();
+                                cout << "of cost: " << cost << endl << endl;
+                                this->explore(temp);
+                                cout << endl;
+                        }
+                }
+        }
 }
 
 void Tree::solveEDH() {

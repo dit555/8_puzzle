@@ -13,7 +13,7 @@ using std::cin;
 using std::ofstream;
 
 int main() {
-	char a1,a2,a3,a4,a5,a6,a7,a8,a9,a10;
+	char a1,a2;
 	cout << "Welcome to 862126186 8 puzzle solver." << endl;
 	cout << "Type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle." << endl;
 	cin >> a1;
@@ -37,42 +37,172 @@ int main() {
                         Node b(&a);
                         Tree c(&b);
 
-		ofstream myfile;
-		myfile.open("trace.txt", std::ios::trunc);
-		myfile << "Welcome to 862126186 8 puzzle solver." << endl;
-        	myfile << "Type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle." << endl;
-       		myfile << a1 << endl << endl;
+			ofstream myfile;
+			myfile.open("trace.txt", std::ios::trunc);
+			myfile << "Welcome to 862126186 8 puzzle solver." << endl;
+			myfile << "Type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle." << endl;
+			myfile << a1 << endl << endl;
 
-                myfile << "your board (not yet scrambled) is: " << endl;
-		myfile.close();
-		a.printBox();
-		myfile.open("trace.txt", std::ios::app);
-                myfile << "Enter your choice of algorithm: " << endl;
-                myfile << "1. Uniform Cost Search\n";
-                myfile << "2. Misplaced Tile heuristic\n";
-                myfile << "3. A* with Euclidian Distance heuristic\n";
-		myfile << a2 << endl;
-		myfile << "*NOTE: only 3 tiles have been moved in the scramble\n" 
-			<<"for conviencence as scrambles that are higher\n" 
-			<< "have a potential to take a very long time in UCS* \n" << endl;
-		myfile.close();
-		c.solveUCF();
+			myfile << "your board (not yet scrambled) is: " << endl;
+			myfile.close();
+			a.printBox();
+			myfile.open("trace.txt", std::ios::app);
+			myfile << "Enter your choice of algorithm: " << endl;
+			myfile << "1. Uniform Cost Search\n";
+			myfile << "2. Misplaced Tile heuristic\n";
+			myfile << "3. A* with Euclidian Distance heuristic\n";
+			myfile << a2 << endl;
+			myfile << "*NOTE: only 3 tiles have been moved in the scramble\n" 
+				<<"for conviencence as scrambles that are higher\n" 
+				<< "have a potential to take a very long time in UCS* \n" << endl;
+			myfile.close();
+			c.solveUCF();
 		}
 
 		else if (a2 == '2'){
                         a.scramble(10);
                         Node b(&a);
                         Tree c(&b);
-                        c.solveMTH();
+
+			ofstream myfile;
+			myfile.open("trace.txt", std::ios::trunc);
+			myfile << "Welcome to 862126186 8 puzzle solver." << endl;
+			myfile << "Type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle." << endl;
+			myfile << a1 << endl << endl;
+
+			myfile << "your board (not yet scrambled) is: " << endl;
+			myfile.close();
+			a.printBox();
+			myfile.open("trace.txt", std::ios::app);
+			myfile << "Enter your choice of algorithm: " << endl;
+			myfile << "1. Uniform Cost Search\n";
+			myfile << "2. Misplaced Tile heuristic\n";
+			myfile << "3. A* with Euclidian Distance heuristic\n";
+			myfile << a2 << endl;
+			myfile.close();
+			c.solveMTH();
                 }
 
                 else if (a2 == '3'){
                         a.scramble(10);
                         Node b(&a);
                         Tree c(&b);
-                        c.solveEDH();
+
+			ofstream myfile;
+			myfile.open("trace.txt", std::ios::trunc);
+			myfile << "Welcome to 862126186 8 puzzle solver." << endl;
+			myfile << "Type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle." << endl;
+			myfile << a1 << endl << endl;
+
+			myfile << "your board (not yet scrambled) is: " << endl;
+			myfile.close();
+			a.printBox();
+			myfile.open("trace.txt", std::ios::app);
+			myfile << "Enter your choice of algorithm: " << endl;
+			myfile << "1. Uniform Cost Search\n";
+			myfile << "2. Misplaced Tile heuristic\n";
+			myfile << "3. A* with Euclidian Distance heuristic\n";
+			myfile << a2 << endl;
+			myfile.close();
+			c.solveEDH();
                 }
 
+	}
+	
+	//////////////////////////////////////////////////////////////////////////////////////////
+	else if (a2 == '2'){
+		string d[9];
+		cout << "please enter the numbers, and press enter after each number\n"
+			<< "e.g. 1 followed by enter, with \'*\' being the emty slot"<< endl;
+		cin >>d[0];
+		cin >>d[1];
+		cin >>d[2];
+		cin >>d[3];
+		cin >>d[4];
+		cin >>d[5];
+		cin >>d[6];
+		cin >>d[7];
+		cin >>d[8];
+		
+		Board a(d, 3);
+		Node b(&a);
+		Tree c(&c);
+		
+		cout << "your board is: " << endl;
+		a.printBox();
+
+		cout << "Enter your choice of algorithm: " << endl;
+		cout << "1. Uniform Cost Search\n";
+		cout << "2. Misplaced Tile heuristic\n";
+		cout << "3. A* with Euclidian Distance heuristic\n";
+		cin >> a2;
+		
+		if (a2 == '1'){
+
+
+			ofstream myfile;
+			myfile.open("trace.txt", std::ios::trunc);
+			myfile << "Welcome to 862126186 8 puzzle solver." << endl;
+			myfile << "Type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle." << endl;
+			myfile << a1 << endl << endl;
+
+			myfile << "your board (not yet scrambled) is: " << endl;
+			myfile.close();
+			a.printBox();
+			myfile.open("trace.txt", std::ios::app);
+			myfile << "Enter your choice of algorithm: " << endl;
+			myfile << "1. Uniform Cost Search\n";
+			myfile << "2. Misplaced Tile heuristic\n";
+			myfile << "3. A* with Euclidian Distance heuristic\n";
+			myfile << a2 << endl;
+			myfile << "*NOTE: only 3 tiles have been moved in the scramble\n" 
+				<<"for conviencence as scrambles that are higher\n" 
+				<< "have a potential to take a very long time in UCS* \n" << endl;
+			myfile.close();
+			c.solveUCF();
+		}
+		
+		else if (a2 == '2'){
+			ofstream myfile;
+			myfile.open("trace.txt", std::ios::trunc);
+			myfile << "Welcome to 862126186 8 puzzle solver." << endl;
+			myfile << "Type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle." << endl;
+			myfile << a1 << endl << endl;
+
+			myfile << "your board (not yet scrambled) is: " << endl;
+			myfile.close();
+			a.printBox();
+			myfile.open("trace.txt", std::ios::app);
+			myfile << "Enter your choice of algorithm: " << endl;
+			myfile << "1. Uniform Cost Search\n";
+			myfile << "2. Misplaced Tile heuristic\n";
+			myfile << "3. A* with Euclidian Distance heuristic\n";
+			myfile << a2 << endl;
+			
+			myfile.close();
+			c.solveMTH();
+		}
+		
+		else if (a2 == '3'){
+			ofstream myfile;
+			myfile.open("trace.txt", std::ios::trunc);
+			myfile << "Welcome to 862126186 8 puzzle solver." << endl;
+			myfile << "Type \"1\" to use a default puzzle, or \"2\" to enter your own puzzle." << endl;
+			myfile << a1 << endl << endl;
+
+			myfile << "your board (not yet scrambled) is: " << endl;
+			myfile.close();
+			a.printBox();
+			myfile.open("trace.txt", std::ios::app);
+			myfile << "Enter your choice of algorithm: " << endl;
+			myfile << "1. Uniform Cost Search\n";
+			myfile << "2. Misplaced Tile heuristic\n";
+			myfile << "3. A* with Euclidian Distance heuristic\n";
+			myfile << a2 << endl;
+			myfile.close();
+			c.solveEDH();
+		}
+		
 	}
 	
 	//const string d[9] = { "1" , "*", "3", "4","2","6","7","5","8" };

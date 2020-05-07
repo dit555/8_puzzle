@@ -29,7 +29,8 @@ void Tree::explore(Node* b) {
 		/*cout << "tyring up..." << endl;*/
 		b->setUP(newNode(b->getBrd(), b->getDepth() + 1));
 		b->UP()->getBrd()->up();
-		//b->UP()->incDepth();
+		//cout << b->UP()->getBrd()->getEmptyX() << endl;
+		//cout << b->UP()->getBrd()->getEmptyX() << endl;
 		/*b->UP()->getBrd()->printBox();*/
 			//cout << endl << b->UP()->getDepth();
 	}
@@ -285,6 +286,7 @@ void Tree::solveUCF() {
 		myfile << "cost: 0" << endl << endl;
 		myfile.close();
 		this->explore(temp);
+		
 
 		while (1) {
 			int cost = this->minUCF(root);
@@ -308,6 +310,8 @@ void Tree::solveUCF() {
 				myfile.close();
 				temp->getBrd()->printBox();
 				myfile.open("trace.txt", std::ios::app);
+				//myfile << temp->getBrd()->getEmptyX() << endl;
+				//myfile << temp->getBrd()->getEmptyY() << endl;
 				myfile << "of cost: " << cost << endl << endl;
 				myfile.close();
 				this->explore(temp);

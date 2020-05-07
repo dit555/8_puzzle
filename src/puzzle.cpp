@@ -128,6 +128,9 @@ int main() {
 		Node b(&a);
 		Tree c(&b);
 		
+		cout << a.getEmptyX() << endl;
+		cout << a.getEmptyY() << endl;
+
 		cout << "your board is: " << endl;
 		a.printBox();
 

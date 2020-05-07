@@ -8,8 +8,8 @@ using std::string;
 class Board {
 public:
 	Board(const int n);
-	Board(const string* n, const int s);
-	Board(const Board* b);
+	Board(string* n, const int s);
+	Board(Board* b);
 
 	string** getBoard() const;
 	string getVal(int x, int y) const;

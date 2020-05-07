@@ -33,7 +33,7 @@ Board::Board(const int n){
 	size = n;
 }
 
-Board::Board(const string *n, const int s){
+Board::Board(string *n, const int s){
 	int i, j;
         int value = 0; //first number to be put in the board
 	brd = new string*[s];
@@ -45,8 +45,8 @@ Board::Board(const string *n, const int s){
                         col[j] = n[value];
                         value++;
 			if (col[j] == "*"){
-				emptyX = i;
-				emptyY = j;
+				emptyX = j;
+				emptyY = i;
 			}
 			
                 }
@@ -55,7 +55,7 @@ Board::Board(const string *n, const int s){
         size = s;
 }
 
-Board::Board(const Board* b){
+Board::Board(Board* b){
 	int i, j;
         int value = 0; //first number to be put in the board
         brd = new string*[b->getSize()];

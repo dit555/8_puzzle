@@ -1,4 +1,4 @@
-# 8_puzzle
+# 8_puzzle solver
 Can solve a 3 x 3 slide puzzle and easily modified to solve an n x n one. 
 Also, allows you to scramble a standard puzzle or input one to solve. 
 This project was made for an intro to artifical intellegence class and recieved 100% score. 
